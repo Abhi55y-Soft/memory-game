@@ -1,4 +1,9 @@
-const gameContainer = document.getElementsById("game");
+const gameContainer = document.querySelector("#game");
+let tempElt1 = "";
+let tempElt2 = "";
+let click = -1;
+let matched = 0;
+
 
 const COLORS = [
   "red",
@@ -60,7 +65,28 @@ function createDivsForColors(colorArray) {
 // TODO: Implement this function!
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
-  console.log("you clicked",event.target);
+  if (click < 1){
+    tempElt1 = event.target;
+    tempElt1.style.backgroundColor = tempElt1.getAttribute("class");
+    click = 1;
+  }
+  else if (event.target !== tempElt1){
+    tempElt2 = event.target;
+    tempElt2.style.backgroundColor = tempElt2.getAttribute("class");
+    if(tempElt1.getAttribute("class") !== tempElt2.getAttribute("class")){
+      setTimeout(()=> {
+        tempElt1.style.backgroundColor = "white";
+        tempElt2.style.backgroundColor = "white";
+      },1000)
+    }
+    else{
+      matched += 2;
+      if (matched === 10){
+        window.alert("You have found all the pair of colors");
+      }
+    }
+    click = 0;
+  }
 }
 
 // when the DOM loads
