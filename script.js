@@ -75,9 +75,9 @@ function handleCardClick(event) {
     tempElt2.style.backgroundColor = tempElt2.getAttribute("class");
     if(tempElt1.getAttribute("class") !== tempElt2.getAttribute("class")){
       setTimeout(()=> {
-        tempElt1.style.backgroundColor = "white";
-        tempElt2.style.backgroundColor = "white";
-      },1000)
+        tempElt1.style.backgroundColor = null;
+        tempElt2.style.backgroundColor = null;
+      },500)
     }
     else{
       matched += 2;
